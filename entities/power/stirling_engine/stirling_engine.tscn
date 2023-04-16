@@ -1,0 +1,104 @@
+[gd_scene load_steps=6 format=3 uid="uid://de0pf66qmfiyx"]
+
+[ext_resource type="Script" path="res://entities/power/stirling_engine/stirling_engine.gd" id="1_fa674"]
+[ext_resource type="Texture2D" uid="uid://ccicre0bw21x3" path="res://world/tileset.svg" id="1_wrkqi"]
+
+[sub_resource type="Animation" id="Animation_eyq2d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PistonBack:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -15)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PistonFront:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -15)]
+}
+
+[sub_resource type="Animation" id="Animation_3voru"]
+resource_name = "produce_energy"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PistonBack:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -15), Vector2(0, -35), Vector2(0, -15)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PistonFront:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -15), Vector2(0, -35), Vector2(0, -15)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c6cbc"]
+_data = {
+"RESET": SubResource("Animation_eyq2d"),
+"produce_energy": SubResource("Animation_3voru")
+}
+
+[node name="StirlingEngine" type="StaticBody2D"]
+script = ExtResource("1_fa674")
+metadata/_edit_horizontal_guides_ = []
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+autoplay = "produce_energy"
+speed_scale = 0.0
+libraries = {
+"": SubResource("AnimationLibrary_c6cbc")
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-50, 0, 0, -24, 51, 0, 0, 25)
+
+[node name="EngineBase" type="Sprite2D" parent="."]
+texture = ExtResource("1_wrkqi")
+offset = Vector2(0, -15)
+region_enabled = true
+region_rect = Rect2(449, 120, 102, 100)
+
+[node name="PistonBack" type="Sprite2D" parent="."]
+texture = ExtResource("1_wrkqi")
+offset = Vector2(0, -15)
+region_enabled = true
+region_rect = Rect2(779, 120, 102, 100)
+
+[node name="PistonShaft" type="Sprite2D" parent="."]
+texture = ExtResource("1_wrkqi")
+offset = Vector2(0, -15)
+region_enabled = true
+region_rect = Rect2(559, 120, 102, 100)
+
+[node name="PistonFront" type="Sprite2D" parent="."]
+texture = ExtResource("1_wrkqi")
+offset = Vector2(0, -15)
+region_enabled = true
+region_rect = Rect2(669, 120, 102, 100)
