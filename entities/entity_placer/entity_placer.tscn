@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://nr8emjh136c7"]
+
+[ext_resource type="Script" path="res://entities/entity_placer/entity_placer.gd" id="1_k07vd"]
+
+[node name="EntifyPlacer" type="TileMap"]
+format = 2
+script = ExtResource("1_k07vd")

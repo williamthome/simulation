@@ -1,7 +1,7 @@
 extends TileMap
 
 
-@export var barrier_layer := 0
+@export var barrier_layer := 1
 @export var barrier_atlas_cords := Vector2i(5, 2)
 @export var barrier_source_id = 1
 

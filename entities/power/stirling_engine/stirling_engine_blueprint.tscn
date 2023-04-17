@@ -1,3 +1,11 @@
-[gd_scene format=3 uid="uid://bem53u1aaqp07"]
+[gd_scene load_steps=2 format=3 uid="uid://bem53u1aaqp07"]
+
+[ext_resource type="Texture2D" uid="uid://bbdpst6mm06bk" path="res://assets/blueprint.svg" id="1_kpi7c"]
 
 [node name="StirlingEngineBlueprint" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_kpi7c")
+offset = Vector2(0, -15)
+region_enabled = true
+region_rect = Rect2(889, 120, 102, 100)
